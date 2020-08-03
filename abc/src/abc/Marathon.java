@@ -7,6 +7,7 @@ public class Marathon {
 			System.out.println(solution(new String[] {"병주","병헌","승언"}, new String[] {"병헌","승언"}));
 			System.out.println(solution(new String[] {"병주","병헌","승언","송군"}, new String[] {"병주","병헌","송군"}));
 			System.out.println(solution(new String[] {"병주","병헌","승언","송군"}, new String[] {"병주","병헌","승언"}));
+		System.out.println("git연습용 수정");
 		}
 		
 		public static String solution(String[] participant, String[] completion) {
@@ -39,4 +40,5 @@ public class Marathon {
 			}
 			return answer;
 		}
+		
 }
