@@ -14,6 +14,7 @@ public class reserveSystem {
 			hotel.addCustomer(customer);
 			customer.setReservationNumber(hotel.hotelReservationNumber());
 			hotel.setRoomCount(hotel.getRoomCount()-1);//룸 갯수를 하나 줄어들게함
+			hotel.addCustomer(customer);//해당고객 선택한 호텔에 추가함
 			return customer.getReservationNumber();
 		}else {
 			return -1; //예약실패

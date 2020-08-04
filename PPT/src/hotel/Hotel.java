@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import customer.Customer;
+import reserve.reserveSystem;
 import utils.utils;
 
 public class Hotel {
@@ -12,9 +13,10 @@ public class Hotel {
 	private String hotelLocation;
 	private int roomCount;
 	
-	
+
 	ArrayList<Customer> customerList = new ArrayList<Customer>();
 	ArrayList<Hotel> hotelList = new ArrayList<Hotel>();
+	
 	//기본생성자
 	public Hotel() {
 		this.hotelGrade = utils.NOMAL; //기본등급은 일반 등급으로 지정
@@ -56,6 +58,27 @@ public class Hotel {
 		for(Hotel h : hotels) {
 			System.out.println(h);
 		}*/
+		
+	}
+	//예약번호가 있을경우 호텔에 예약한 손님이 맞는지 확인하는 메서드
+	public void getCustomer(String hotelName,int reservationNumber, ArrayList<Hotel>hList) {
+		for(int i=0; i<hList.size();i++) {
+			//가져온 호텔이름과 고객이 선택한 호텔이름이 같을경우
+			if(hList.get(i).getHotelName().equals(hotelName)) {
+				ArrayList<Customer> list=hList.get(i).getCustomerList(); //해당 호텔에 고객리스트를 받아서 list에 저장
+				for(int j=0; j<list.size();j++) {
+					int Num = list.get(j).getReservationNumber();
+					if(Num == reservationNumber) {
+						System.out.printf("%s에 정상적으로 예약되어있습니다",hList.get(i).getHotelName());
+						return;
+					}
+				}
+				
+			}
+		}
+		System.out.println("해당호텔에 일치하는 예약번호가 없습니다");
+		System.out.println("호텔또는 예약번호를 확인해주세요");
+		
 		
 	}
 	
