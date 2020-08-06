@@ -2,12 +2,31 @@ package customer;
 
 public class Customer {
 	
+	private String customerId;
 	private String customerName;
 	private int customerAge;
 	private String customerAddress;
 	private int reservationNumber;
 	
+	public Customer() {
+		
+	}
 	
+	
+	public Customer(String customerId, String customerName, int customerAge, String customerAddress) {
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.customerAge = customerAge;
+		this.customerAddress = customerAddress;
+	}
+
+
+	public String getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
 	public int getReservationNumber() {
 		return reservationNumber;
 	}
