@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import customer.Customer;
-import reserve.reserveSystem;
 import utils.utils;
 
 public class Hotel {
@@ -15,7 +14,6 @@ public class Hotel {
 	
 
 	ArrayList<Customer> customerList = new ArrayList<Customer>();
-	ArrayList<Hotel> hotelList = new ArrayList<Hotel>();
 	
 	//기본생성자
 	public Hotel() {
@@ -29,58 +27,25 @@ public class Hotel {
 		this.roomCount = roomCount;
 	}
 	
-	public ArrayList<Hotel> createHotel() {
-		
-		Hotel sinra = new Hotel("신라호텔", "서울", 3);
-		Hotel westin = new Hotel("웨스틴조선","부산",3);
-		Hotel grand = new Hotel("그랜드호텔","부산",3);
-		Hotel toyo = new Hotel("토요코인","부산",3);
 	
-		sinra.setHotelGrade(utils.FRIVESTAR);
-		westin.setHotelGrade(utils.FRIVESTAR);
-		grand.setHotelGrade(utils.FRIVESTAR);
-		
-		hotelList.add(sinra);
-		hotelList.add(westin);
-		hotelList.add(grand);
-		hotelList.add(toyo);
-		
-		return hotelList;
-		
-	}
-	public void showHotels() {
-		ArrayList<Hotel>hotels =getHotelList();
-		for(int i=0; i<hotels.size(); i++) {
-			System.out.print(i+1+"번 ");
-			System.out.println(hotels.get(i));
-		}
-		/*
-		for(Hotel h : hotels) {
-			System.out.println(h);
-		}*/
-		
-	}
 	//예약번호가 있을경우 호텔에 예약한 손님이 맞는지 확인하는 메서드
-	public void getCustomer(String hotelName,int reservationNumber, ArrayList<Hotel>hList) {
-		for(int i=0; i<hList.size();i++) {
-			//가져온 호텔이름과 고객이 선택한 호텔이름이 같을경우
-			if(hList.get(i).getHotelName().equals(hotelName)) {
-				ArrayList<Customer> list=hList.get(i).getCustomerList(); //해당 호텔에 고객리스트를 받아서 list에 저장
-				for(int j=0; j<list.size();j++) {
-					int Num = list.get(j).getReservationNumber();
+	public void getCustomer(int reservationNumber) {
+		for(int i=0; i<customerList.size();i++) {
+			for(int j=0; j<customerList.size();j++) {
+					int Num = customerList.get(j).getReservationNumber();
 					if(Num == reservationNumber) {
-						System.out.printf("%s에 정상적으로 예약되어있습니다",hList.get(i).getHotelName());
+						System.out.printf("정상적으로 예약되어있습니다");
 						return;
 					}
 				}
 				
 			}
-		}
 		System.out.println("해당호텔에 일치하는 예약번호가 없습니다");
 		System.out.println("호텔또는 예약번호를 확인해주세요");
+		}
 		
 		
-	}
+		
 	
 	public int hotelReservationNumber() {
 		int reservationNumber =0;
@@ -126,13 +91,6 @@ public class Hotel {
 		this.customerList = customerList;
 	}
 
-	public ArrayList<Hotel> getHotelList() {
-		return hotelList;
-	}
-
-	public void setHotelList(ArrayList<Hotel> hotelList) {
-		this.hotelList = hotelList;
-	}
 	@Override
 	public String toString() {
 		return "호텔=" + hotelName + ", 등급=" + hotelGrade + ", 위치=" + hotelLocation

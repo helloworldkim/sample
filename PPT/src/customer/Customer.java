@@ -1,7 +1,5 @@
 package customer;
 
-import java.util.ArrayList;
-
 public class Customer {
 	
 	private String customerName;
@@ -9,14 +7,7 @@ public class Customer {
 	private String customerAddress;
 	private int reservationNumber;
 	
-	ArrayList<Customer> customerList = new ArrayList<Customer>();
 	
-	public ArrayList<Customer> getCustomerList() {
-		return customerList;
-	}
-	public void setCustomerList(ArrayList<Customer> customerList) {
-		this.customerList = customerList;
-	}
 	public int getReservationNumber() {
 		return reservationNumber;
 	}
@@ -42,6 +33,12 @@ public class Customer {
 		this.customerAddress = customerAddress;
 	}
 
+	@Override
+	public String toString() {
+		return "성함=" + customerName + ", 나이=" + customerAge + ", 주소="
+				+ customerAddress;
+	}
+	
 	
 	
 
