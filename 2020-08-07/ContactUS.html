@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body{
+            box-sizing: border-box;
+            background-color:gray;
+            color: white;
+        }
+        .formList{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .flexbox > li{
+            display: flex;
+            flex-direction: column;
+        }
+        .submit{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        sup{
+            color: red;
+        }
+        .thankyou{
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: black;
+            z-index: 999;
+        }
+        .chaged{
+            display: block;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: black;
+            z-index: 999;
+        }
+        #thanks > section{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            
+        }
+        .thankyou >section > h1{
+            color: aqua;
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+            
+    </style>
+</head>
+<body>
+    <div class="bodycontainer">
+        <form class="formList" action="" onsubmit="return false" >
+        <h1 style="text-indent: 100px;">문의사항 form</h1>
+        <ul class="flexbox">
+            <li>
+                <label for="name">이름<sup>*</sup></label>
+                <span class="inputbox"><input type="text" name="name" id="name" placeholder="이름을 입력하여주세요" required></span>
+            </li>
+            <li>
+                <label for="email">답변받을 이메일<sup>*</sup></label>
+                <span class="inputbox"><input type="email" name="email" id="email" placeholder="abcd@gmail.com" required></span>
+            </li>
+            <li>
+                <label for="message">문의내용<sup>*</sup></label>
+                <span class="textbox">
+                    <textarea name="message" id="message" placeholder="궁금한점을 적어주세요"required style="width: 300px; height: 300px;"></textarea>
+                </span>
+            </li>
+        </ul>
+            <input class="submit" type="submit" value="전송하기">
+        </form>
+       <div id="thanks" class="thankyou">
+        <section>
+            <h1>작성이 완료되었습니다</h1>
+            <p>확인 후 빠르게 답변드리겠습니다</p>
+            <div class="btnbox">
+                <input id="closebtn" type="button" value="닫기">
+            </div>
+        </section>
+    </div>
+    </div>
+    <script>
+        window.addEventListener("load",function(){
+            var form = document.querySelector(".formList");
+            var sendbtn = form.querySelector("input[type='submit']");
+            var thankyou = document.querySelector("#thanks");
+
+                sendbtn.onclick = function(){
+                var name = form.querySelector("#name");
+                var email = form.querySelector("#email");
+                var textarea = form.querySelector("textarea");
+                                                                                                                //원래는 정규표현식 넣어서 이메일 형식이 맞는지도 확인해야함
+                if((textarea.value!=null&&textarea.value !="")&& (name.value!=null && name.value!="") && (email.value!=null&&email.value!="")){
+                thankyou.classList.remove("thankyou");
+                thankyou.classList.add("chaged");
+                console.log(thankyou.classList);
+                }
+               
+            }
+             var closebtn = document.querySelector("#closebtn");
+            closebtn.onclick = function(){
+                thankyou.classList.remove("chaged");
+               thankyou.classList.add("thankyou");
+               console.log(thankyou.classList);
+            } 
+        });
+        
+    </script>
+    
+    
+</body>
+</html>
