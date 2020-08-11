@@ -81,8 +81,5 @@ public class BodyMenu {
 			}
 	}
 }
-	public void Six() {
-		
-	}
-
+	
 }
