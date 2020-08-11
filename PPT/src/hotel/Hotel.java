@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import customer.Customer;
-import utils.utils;
 
 public class Hotel {
 	private String hotelName;
@@ -17,12 +16,12 @@ public class Hotel {
 	
 	//기본생성자
 	public Hotel() {
-		this.hotelGrade = utils.NOMAL; //기본등급은 일반 등급으로 지정
+		this.hotelGrade = "3성"; //기본등급은 일반 등급으로 지정
 	}
 	//생성자
 	public Hotel(String hotelName, String hotelLocation, int roomCount) {
 		this.hotelName = hotelName;
-		this.hotelGrade = utils.NOMAL; //기본등급은 일반 등급으로 지정
+		this.hotelGrade = "3성"; //기본등급은 일반 등급으로 지정
 		this.hotelLocation = hotelLocation;
 		this.roomCount = roomCount;
 	}
